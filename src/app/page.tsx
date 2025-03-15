@@ -15,6 +15,7 @@ export default async function Home() {
         width={20}
         height={20}
       />
+      --
       <p>You are signed in as {session?.user?.name}</p>
       <SignOutButton />
     </>
