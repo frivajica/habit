@@ -12,8 +12,8 @@ export const logout = async () => {
 	const newUser = await db
 	.insert(users)
 	.values({
-		first_name: 'Fran',
-		last_name: 'Jim',
+		firstName: 'Fran',
+		lastName: 'Jim',
 		email: 'franjim@gmail.com',
 		avatar: 'someteest',
 	})

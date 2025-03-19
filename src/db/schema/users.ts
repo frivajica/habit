@@ -7,12 +7,12 @@ import { usersToSpaces } from "./usersSpaces";
 
 export const users = pgTable("users", {
   id: serial('id').primaryKey(),
-  first_name: varchar({ length: 255 }).notNull(),
-  last_name: varchar({ length: 255 }).notNull(),
+  firstName: varchar({ length: 255 }).notNull(),
+  lastName: varchar({ length: 255 }).notNull(),
   email: varchar({ length: 255 }).notNull().unique(),
   avatar: varchar({ length: 1200 }),
-	made_at: timestamp().defaultNow().notNull(),
-	last_modified_at: timestamp(),
+	madeAt: timestamp().defaultNow().notNull(),
+	lastModifiedAt: timestamp().defaultNow(),
 });
 
 export const userRelations = relations(users, ({ many }) => ({

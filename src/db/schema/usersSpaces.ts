@@ -6,23 +6,23 @@ import { relations } from "drizzle-orm";
 export const usersToSpaces = pgTable(
   "users_to_spaces",
   {
-    user_id: integer("user_id")
+    userId: integer("user_id")
       .notNull()
       .references(() => users.id),
-    space_id: integer("space_id")
+    spaceId: integer("space_id")
       .notNull()
       .references(() => spaces.id),
   },
-  (t) => [primaryKey({ columns: [t.user_id, t.space_id] })]
+  (t) => [primaryKey({ columns: [t.userId, t.spaceId] })]
 );
 
 export const usersToGroupsRelations = relations(usersToSpaces, ({ one }) => ({
   group: one(spaces, {
-    fields: [usersToSpaces.space_id],
+    fields: [usersToSpaces.spaceId],
     references: [spaces.id],
   }),
   user: one(users, {
-    fields: [usersToSpaces.user_id],
+    fields: [usersToSpaces.userId],
     references: [users.id],
   }),
 }));
