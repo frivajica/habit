@@ -6,21 +6,21 @@ import { users } from "./users";
 
 export const questions = pgTable("questions", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  spaceId: integer('space_id').references(() => spaces.id),
+  space_id: integer('space_id').references(() => spaces.id),
   title: varchar({ length: 255 }).notNull(),
   description: varchar({ length: 400 }),
-  madeBy: integer('user_id').references(() => users.id),
-	madeAt: timestamp().defaultNow().notNull(),
-	lastModifiedAt: timestamp(),
+  made_by: integer('user_id').references(() => users.id),
+	made_at: timestamp().defaultNow().notNull(),
+	last_modified_at: timestamp(),
 });
 
 export const questionRelations = relations(questions, ({ one, many }) => ({
   space: one(spaces, {
-    fields: [questions.spaceId],
+    fields: [questions.space_id],
     references: [spaces.id],
   }),
   user: one(users, {
-    fields: [questions.madeBy],
+    fields: [questions.made_by],
     references: [users.id],
   }),
   records: many(records),

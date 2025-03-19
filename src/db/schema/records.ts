@@ -5,20 +5,20 @@ import { relations } from "drizzle-orm";
 
 export const records = pgTable("records", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  questionId: integer('question_id').references(() => questions.id),
-  recordedBy: integer('user_id').references(() => users.id),
+  question_id: integer('question_id').references(() => questions.id),
+  recorded_by: integer('user_id').references(() => users.id),
   value: boolean().notNull(),
-	madeAt: timestamp().defaultNow().notNull(),
-	lastModifiedAt: timestamp(),
+	made_at: timestamp().defaultNow().notNull(),
+	last_modified_at: timestamp(),
 });
 
 export const recordRelations = relations(records, ({ one }) => ({
   question: one(questions, {
-    fields: [records.questionId],
+    fields: [records.question_id],
     references: [questions.id],
   }),
-  recordedBy: one(users, {
-    fields: [records.recordedBy],
+  recorded_by: one(users, {
+    fields: [records.recorded_by],
     references: [users.id],
   }),
 }));
