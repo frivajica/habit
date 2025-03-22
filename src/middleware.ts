@@ -10,12 +10,12 @@ export default async function middleware(req: NextRequest) {
 	const isProtectedRoute = protectedRoutes.includes(path)
 	const isPublicRoute = publicRoutes.includes(path)
 	console.log('isProtectedRoute ---------->', path, isProtectedRoute);	
-	console.log('newURL ---------->', new URL('/login', req.nextUrl));	
+	console.log('newURL ---------->', new URL('/login', process.env.NEXT_PUBLIC_DOMAIN));	
 	
 	if (isProtectedRoute && !session?.user) {
-		return NextResponse.redirect(new URL('/login', req.nextUrl))
+		return NextResponse.redirect(new URL('/login', process.env.NEXT_PUBLIC_DOMAIN))
 	} else if (isPublicRoute && session?.user) {
-		return NextResponse.redirect(new URL('/', req.nextUrl))
+		return NextResponse.redirect(new URL('/', process.env.NEXT_PUBLIC_DOMAIN))
 	}
 
 	return NextResponse.next()
