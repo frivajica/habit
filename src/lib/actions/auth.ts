@@ -1,8 +1,6 @@
 'use server'
 
-import { signIn, signOut } from "@/auth"
-import { db } from "@/db"
-import { users } from "@/db/schema/users"
+import { signIn } from "@/auth"
 
 export const login = async () => {
 	await signIn('google', { redirectTo: '/' })
