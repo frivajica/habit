@@ -1,12 +1,10 @@
-import { SignInButton } from "../components/SignInButton";
-
 export default async function Login() {
   return (
-    <div className="h-screen flex justify-center items-center p-4">
-      <div className="bg-gray-900 p-4 rounded-sm grid justify-center gap-4">
-        <p className="text-center">Inicia sesión con Google para guardar tus registros</p>
-        <SignInButton />
-      </div>
-    </div>
+        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+          <h1 className="text-4xl font-bold tracking-tight">Habit</h1>
+          <p className="text-muted-foreground max-w-[600px]">
+            Create spaces, invite friends, and track daily habits together.
+          </p>
+        </div>
   );
 }
